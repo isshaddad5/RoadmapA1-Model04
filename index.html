@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap A1 (Units 1-6) Final Exam - By: Mr. Islam Saber</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #2563eb;
+            --secondary: #0f766e;
+            --background: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --success: #15803d;
+            --success-bg: #f0fdf4;
+            --danger: #b91c1c;
+            --danger-bg: #fef2f2;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-top: 6px solid var(--primary);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        header h1 {
+            color: var(--primary);
+            font-size: 1.75rem;
+            margin-bottom: 8px;
+        }
+
+        .author-tag {
+            display: inline-block;
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .meta-info {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .section-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px;
+            margin: 30px 0 16px 0;
+            font-size: 1.15rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+
+        .audio-controls-panel {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .track-player {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 10px 16px;
+            border-radius: 6px;
+            border: 1px solid #dbeafe;
+        }
+
+        .track-label {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .audio-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .audio-btn {
+            background-color: var(--primary-light);
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            font-size: 0.85rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .audio-btn:hover {
+            opacity: 0.9;
+        }
+
+        .audio-btn.stop {
+            background-color: #ef4444;
+        }
+
+        .reading-passage {
+            background-color: #f1f5f9;
+            border-left: 5px solid var(--primary-light);
+            padding: 18px 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+
+        .toggle-btn {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: var(--primary);
+            padding: 8px 14px;
+            font-size: 0.85rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .toggle-btn:hover {
+            background-color: #f1f5f9;
+        }
+
+        .audio-script-box {
+            display: none;
+            background-color: #fefce8;
+            border: 1px dashed #ca8a04;
+            padding: 16px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #713f12;
+            line-height: 1.6;
+        }
+
+        .q-text {
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background 0.15s;
+        }
+
+        .option-label:hover {
+            background-color: #f8fafc;
+        }
+
+        .option-label input {
+            margin-right: 12px;
+            transform: scale(1.15);
+        }
+
+        .feedback-box {
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 0.92rem;
+            display: none;
+            direction: rtl;
+            text-align: right;
+            line-height: 1.6;
+        }
+
+        .feedback-box.correct {
+            display: block;
+            background-color: var(--success-bg);
+            color: var(--success);
+            border: 1px solid #86efac;
+        }
+
+        .feedback-box.incorrect {
+            display: block;
+            background-color: var(--danger-bg);
+            color: var(--danger);
+            border: 1px solid #fca5a5;
+        }
+
+        .feedback-title {
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .submit-section {
+            text-align: center;
+            margin: 40px 0 20px 0;
+        }
+
+        .submit-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 14px 44px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .submit-btn:hover {
+            opacity: 0.92;
+        }
+
+        .score-board {
+            display: none;
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .score-val {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="author-tag">By: Mr. Islam Saber</div>
+        <h1>Roadmap A1 Final Examination (Units 1–6)</h1>
+        <p class="meta-info">Comprehensive 20 MCQ Test | Dual-Voice Audio Dialogues | Direct Arabic Feedback</p>
+    </header>
+
+    <form id="quizForm">
+        <!-- SECTION 1: LISTENING -->
+        <div class="section-header">
+            <span>Section 1: Listening (Q1 – Q5)</span>
+            <span style="font-size: 0.85rem;">[5 Marks]</span>
+        </div>
+
+        <div class="audio-controls-panel">
+            <div style="font-weight: 600; font-size: 0.95rem; color: #1e3a8a;">
+                🔊 Audio Players (Multi-Voice Natural Dialogues):
+            </div>
+
+            <div class="track-player">
+                <div class="track-label">📻 Track 1: Questions 1 & 2</div>
+                <div class="audio-buttons">
+                    <button type="button" class="audio-btn" onclick="playDialogueTrack('track1')">▶ Play</button>
+                    <button type="button" class="audio-btn stop" onclick="stopAudioTrack()">⏹ Stop</button>
+                </div>
+            </div>
+
+            <div class="track-player">
+                <div class="track-label">📻 Track 2: Question 3</div>
+                <div class="audio-buttons">
+                    <button type="button" class="audio-btn" onclick="playDialogueTrack('track2')">▶ Play</button>
+                    <button type="button" class="audio-btn stop" onclick="stopAudioTrack()">⏹ Stop</button>
+                </div>
+            </div>
+
+            <div class="track-player">
+                <div class="track-label">📻 Track 3: Question 4</div>
+                <div class="audio-buttons">
+                    <button type="button" class="audio-btn" onclick="playDialogueTrack('track3')">▶ Play</button>
+                    <button type="button" class="audio-btn stop" onclick="stopAudioTrack()">⏹ Stop</button>
+                </div>
+            </div>
+
+            <div class="track-player">
+                <div class="track-label">📻 Track 4: Question 5</div>
+                <div class="audio-buttons">
+                    <button type="button" class="audio-btn" onclick="playDialogueTrack('track4')">▶ Play</button>
+                    <button type="button" class="audio-btn stop" onclick="stopAudioTrack()">⏹ Stop</button>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" class="toggle-btn" onclick="toggleAudioScript()">
+            📄 Show / Hide Listening Scripts (On Demand)
+        </button>
+
+        <div id="listeningScripts" class="audio-script-box">
+            <p><strong>Track 1 (Q1 & Q2):</strong></p>
+            <p><em>Receptionist:</em> Welcome to the Language Center. What’s your name, please?<br>
+            <em>Fahad:</em> Hello. My name is Fahad Al-Otaibi.<br>
+            <em>Receptionist:</em> Nice to meet you, Fahad. Where are you from?<br>
+            <em>Fahad:</em> I’m from Saudi Arabia. I live in Riyadh.<br>
+            <em>Receptionist:</em> And are you a university student?<br>
+            <em>Fahad:</em> No, I’m not. I’m a university teacher. I teach computer science.</p>
+            <hr style="margin: 10px 0; border: none; border-top: 1px dashed #ca8a04;">
+            <p><strong>Track 2 (Q3):</strong></p>
+            <p><em>David:</em> Who is the woman in this photo, Khalid?<br>
+            <em>Khalid:</em> That’s my friend Sarah.<br>
+            <em>David:</em> Has she got brown hair like you?<br>
+            <em>Khalid:</em> No, she’s got blonde hair and bright green eyes. She’s very nice.</p>
+            <hr style="margin: 10px 0; border: none; border-top: 1px dashed #ca8a04;">
+            <p><strong>Track 3 (Q4):</strong></p>
+            <p><em>Reem:</em> Mark, do you sleep late during the week?<br>
+            <em>Mark:</em> No, I don’t. From Monday to Friday, I always get up at 6:30 in the morning. Then I start work at 8:30. At the weekend, I stay in bed until 9:00.</p>
+            <hr style="margin: 10px 0; border: none; border-top: 1px dashed #ca8a04;">
+            <p><strong>Track 4 (Q5):</strong></p>
+            <p><em>Customer:</em> Excuse me, how much are two coffees and one chocolate cake?<br>
+            <em>Cashier:</em> The coffees are four pounds and the cake is five pounds. That’s nine pounds, please.<br>
+            <em>Customer:</em> Can I pay by card?<br>
+            <em>Cashier:</em> Yes, of course.</p>
+        </div>
+
+        <!-- Q1 -->
+        <div class="card" id="card_q1">
+            <div class="q-text">1. Where is Fahad from?</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q1" value="A"> (A) Spain</label>
+                <label class="option-label"><input type="radio" name="q1" value="B"> (B) Saudi Arabia</label>
+                <label class="option-label"><input type="radio" name="q1" value="C"> (C) Thailand</label>
+                <label class="option-label"><input type="radio" name="q1" value="D"> (D) Canada</label>
+            </div>
+            <div class="feedback-box" id="fb_q1"></div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="card" id="card_q2">
+            <div class="q-text">2. What is Fahad’s job?</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q2" value="A"> (A) Office worker</label>
+                <label class="option-label"><input type="radio" name="q2" value="B"> (B) Taxi driver</label>
+                <label class="option-label"><input type="radio" name="q2" value="C"> (C) University teacher</label>
+                <label class="option-label"><input type="radio" name="q2" value="D"> (D) Doctor</label>
+            </div>
+            <div class="feedback-box" id="fb_q2"></div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="card" id="card_q3">
+            <div class="q-text">3. What does Sarah look like?</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q3" value="A"> (A) She has got brown hair and blue eyes.</label>
+                <label class="option-label"><input type="radio" name="q3" value="B"> (B) She has got blonde hair and green eyes.</label>
+                <label class="option-label"><input type="radio" name="q3" value="C"> (C) She has got black hair and grey eyes.</label>
+                <label class="option-label"><input type="radio" name="q3" value="D"> (D) She has got red hair and brown eyes.</label>
+            </div>
+            <div class="feedback-box" id="fb_q3"></div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="card" id="card_q4">
+            <div class="q-text">4. What time does Mark get up from Monday to Friday?</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q4" value="A"> (A) At 6:30</label>
+                <label class="option-label"><input type="radio" name="q4" value="B"> (B) At 7:00</label>
+                <label class="option-label"><input type="radio" name="q4" value="C"> (C) At 8:30</label>
+                <label class="option-label"><input type="radio" name="q4" value="D"> (D) At 9:00</label>
+            </div>
+            <div class="feedback-box" id="fb_q4"></div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="card" id="card_q5">
+            <div class="q-text">5. How much are the two coffees and cake?</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q5" value="A"> (A) £5</label>
+                <label class="option-label"><input type="radio" name="q5" value="B"> (B) £7</label>
+                <label class="option-label"><input type="radio" name="q5" value="C"> (C) £9</label>
+                <label class="option-label"><input type="radio" name="q5" value="D"> (D) £12</label>
+            </div>
+            <div class="feedback-box" id="fb_q5"></div>
+        </div>
+
+        <!-- SECTION 2: READING -->
+        <div class="section-header">
+            <span>Section 2: Reading (Q6 – Q10)</span>
+            <span style="font-size: 0.85rem;">[5 Marks]</span>
+        </div>
+
+        <div class="reading-passage">
+            <h4 style="margin-bottom: 8px; color: var(--primary);">Sultan’s Daily Life and City</h4>
+            <p>Sultan is twenty-four years old and lives in a comfortable flat in Abha with his brother. His flat has got two bedrooms, a kitchen, and a living room, but there isn't a garden. Sultan works as an engineer in an office downtown.</p>
+            <p style="margin-top: 8px;">From Sunday to Thursday, he gets up early at 6:00 a.m. He always has coffee and toast for breakfast, and then he takes the bus to work. He starts work at 7:30 a.m. and finishes at 3:30 p.m. In the evening, he relaxes at home or reads books.</p>
+            <p style="margin-top: 8px;">Abha is a very beautiful town. There is a large park near Sultan’s building, and there are many quiet cafés. At the weekend, Sultan meets his friends at the café. He can speak English and Arabic well, and he can cook Italian food, but he can't drive a car.</p>
+        </div>
+
+        <!-- Q6 -->
+        <div class="card" id="card_q6">
+            <div class="q-text">6. What is the main topic of the text?</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q6" value="A"> (A) Buying a new flat in a big town</label>
+                <label class="option-label"><input type="radio" name="q6" value="B"> (B) Sultan's daily routine, home, and town</label>
+                <label class="option-label"><input type="radio" name="q6" value="C"> (C) How to make Italian food</label>
+                <label class="option-label"><input type="radio" name="q6" value="D"> (D) Travelling to different countries</label>
+            </div>
+            <div class="feedback-box" id="fb_q6"></div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="card" id="card_q7">
+            <div class="q-text">7. Where does Sultan work?</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q7" value="A"> (A) In a hospital</label>
+                <label class="option-label"><input type="radio" name="q7" value="B"> (B) In an office</label>
+                <label class="option-label"><input type="radio" name="q7" value="C"> (C) In a restaurant</label>
+                <label class="option-label"><input type="radio" name="q7" value="D"> (D) In a school</label>
+            </div>
+            <div class="feedback-box" id="fb_q7"></div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="card" id="card_q8">
+            <div class="q-text">8. Sultan’s flat does NOT have:</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q8" value="A"> (A) a kitchen</label>
+                <label class="option-label"><input type="radio" name="q8" value="B"> (B) two bedrooms</label>
+                <label class="option-label"><input type="radio" name="q8" value="C"> (C) a garden</label>
+                <label class="option-label"><input type="radio" name="q8" value="D"> (D) a living room</label>
+            </div>
+            <div class="feedback-box" id="fb_q8"></div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="card" id="card_q9">
+            <div class="q-text">9. What does Sultan do at the weekend?</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q9" value="A"> (A) He drives across the city.</label>
+                <label class="option-label"><input type="radio" name="q9" value="B"> (B) He cooks lunch in an office.</label>
+                <label class="option-label"><input type="radio" name="q9" value="C"> (C) He meets friends at the café.</label>
+                <label class="option-label"><input type="radio" name="q9" value="D"> (D) He starts work at 7:30 a.m.</label>
+            </div>
+            <div class="feedback-box" id="fb_q9"></div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="card" id="card_q10">
+            <div class="q-text">10. What skill can Sultan NOT do?</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q10" value="A"> (A) Speak Arabic</label>
+                <label class="option-label"><input type="radio" name="q10" value="B"> (B) Cook Italian food</label>
+                <label class="option-label"><input type="radio" name="q10" value="C"> (C) Speak English</label>
+                <label class="option-label"><input type="radio" name="q10" value="D"> (D) Drive a car</label>
+            </div>
+            <div class="feedback-box" id="fb_q10"></div>
+        </div>
+
+        <!-- SECTION 3: GRAMMAR -->
+        <div class="section-header">
+            <span>Section 3: Grammar (Q11 – Q15)</span>
+            <span style="font-size: 0.85rem;">[5 Marks]</span>
+        </div>
+
+        <!-- Q11 -->
+        <div class="card" id="card_q11">
+            <div class="q-text">11. Maria and Elena are from Madrid. __________ Spanish.</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q11" value="A"> (A) She's</label>
+                <label class="option-label"><input type="radio" name="q11" value="B"> (B) We're</label>
+                <label class="option-label"><input type="radio" name="q11" value="C"> (C) They're</label>
+                <label class="option-label"><input type="radio" name="q11" value="D"> (D) It's</label>
+            </div>
+            <div class="feedback-box" id="fb_q11"></div>
+        </div>
+
+        <!-- Q12 -->
+        <div class="card" id="card_q12">
+            <div class="q-text">12. This is my friend Tariq. __________ father is a doctor.</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q12" value="A"> (A) His</label>
+                <label class="option-label"><input type="radio" name="q12" value="B"> (B) Her</label>
+                <label class="option-label"><input type="radio" name="q12" value="C"> (C) Their</label>
+                <label class="option-label"><input type="radio" name="q12" value="D"> (D) Your</label>
+            </div>
+            <div class="feedback-box" id="fb_q12"></div>
+        </div>
+
+        <!-- Q13 -->
+        <div class="card" id="card_q13">
+            <div class="q-text">13. __________ three supermarkets in our town, but there isn't a cinema.</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q13" value="A"> (A) There is</label>
+                <label class="option-label"><input type="radio" name="q13" value="B"> (B) There are</label>
+                <label class="option-label"><input type="radio" name="q13" value="C"> (C) Is there</label>
+                <label class="option-label"><input type="radio" name="q13" value="D"> (D) Are there</label>
+            </div>
+            <div class="feedback-box" id="fb_q13"></div>
+        </div>
+
+        <!-- Q14 -->
+        <div class="card" id="card_q14">
+            <div class="q-text">14. My brother __________ coffee in the evening; he drinks water.</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q14" value="A"> (A) don't drink</label>
+                <label class="option-label"><input type="radio" name="q14" value="B"> (B) isn't drink</label>
+                <label class="option-label"><input type="radio" name="q14" value="C"> (C) doesn't drink</label>
+                <label class="option-label"><input type="radio" name="q14" value="D"> (D) not drinks</label>
+            </div>
+            <div class="feedback-box" id="fb_q14"></div>
+        </div>
+
+        <!-- Q15 -->
+        <div class="card" id="card_q15">
+            <div class="q-text">15. Ali: "__________ you got your passport in your bag?" — Omar: "Yes, I have."</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q15" value="A"> (A) Has</label>
+                <label class="option-label"><input type="radio" name="q15" value="B"> (B) Have</label>
+                <label class="option-label"><input type="radio" name="q15" value="C"> (C) Do</label>
+                <label class="option-label"><input type="radio" name="q15" value="D"> (D) Are</label>
+            </div>
+            <div class="feedback-box" id="fb_q15"></div>
+        </div>
+
+        <!-- SECTION 4: VOCABULARY -->
+        <div class="section-header">
+            <span>Section 4: Vocabulary (Q16 – Q20)</span>
+            <span style="font-size: 0.85rem;">[5 Marks]</span>
+        </div>
+
+        <!-- Q16 -->
+        <div class="card" id="card_q16">
+            <div class="q-text">16. Mona works in a busy hospital and helps sick people. She is a __________.</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q16" value="A"> (A) nurse</label>
+                <label class="option-label"><input type="radio" name="q16" value="B"> (B) pilot</label>
+                <label class="option-label"><input type="radio" name="q16" value="C"> (C) farmer</label>
+                <label class="option-label"><input type="radio" name="q16" value="D"> (D) taxi driver</label>
+            </div>
+            <div class="feedback-box" id="fb_q16"></div>
+        </div>
+
+        <!-- Q17 -->
+        <div class="card" id="card_q17">
+            <div class="q-text">17. I want to buy fresh food and bread, so I am going to the __________.</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q17" value="A"> (A) train station</label>
+                <label class="option-label"><input type="radio" name="q17" value="B"> (B) supermarket</label>
+                <label class="option-label"><input type="radio" name="q17" value="C"> (C) hotel</label>
+                <label class="option-label"><input type="radio" name="q17" value="D"> (D) cinema</label>
+            </div>
+            <div class="feedback-box" id="fb_q17"></div>
+        </div>
+
+        <!-- Q18 -->
+        <div class="card" id="card_q18">
+            <div class="q-text">18. It is very cold outside today. Put on your warm __________ before you go out.</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q18" value="A"> (A) tickets</label>
+                <label class="option-label"><input type="radio" name="q18" value="B"> (B) credit card</label>
+                <label class="option-label"><input type="radio" name="q18" value="C"> (C) coat</label>
+                <label class="option-label"><input type="radio" name="q18" value="D"> (D) sunglasses</label>
+            </div>
+            <div class="feedback-box" id="fb_q18"></div>
+        </div>
+
+        <!-- Q19 -->
+        <div class="card" id="card_q19">
+            <div class="q-text">19. I am very tired after a long day. I want to go to __________ at 10:00 p.m.</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q19" value="A"> (A) breakfast</label>
+                <label class="option-label"><input type="radio" name="q19" value="B"> (B) bed</label>
+                <label class="option-label"><input type="radio" name="q19" value="C"> (C) work</label>
+                <label class="option-label"><input type="radio" name="q19" value="D"> (D) lunch</label>
+            </div>
+            <div class="feedback-box" id="fb_q19"></div>
+        </div>
+
+        <!-- Q20 -->
+        <div class="card" id="card_q20">
+            <div class="q-text">20. Nawaf loves music. He can __________ the guitar very well.</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="q20" value="A"> (A) play</label>
+                <label class="option-label"><input type="radio" name="q20" value="B"> (B) ride</label>
+                <label class="option-label"><input type="radio" name="q20" value="C"> (C) make</label>
+                <label class="option-label"><input type="radio" name="q20" value="D"> (D) drive</label>
+            </div>
+            <div class="feedback-box" id="fb_q20"></div>
+        </div>
+
+        <div class="submit-section">
+            <button type="button" class="submit-btn" onclick="checkAllAnswers()">Submit & Check Answers (تصحيح الاختبار)</button>
+        </div>
+    </form>
+
+    <div id="scoreBoard" class="score-board">
+        <h2>Exam Result | نتيجة الاختبار</h2>
+        <div class="score-val" id="scoreDisplay">0 / 20</div>
+        <p id="scoreMsg" style="font-size: 1.05rem; font-weight: 600;"></p>
+    </div>
+</div>
+
+<script>
+    // Audio Dialogue Data with Speakers
+    const dialogueTracks = {
+        track1: [
+            { speaker: 'female', text: "Welcome to the Language Center. What is your name, please?" },
+            { speaker: 'male',   text: "Hello. My name is Fahad Al-Otaibi." },
+            { speaker: 'female', text: "Nice to meet you, Fahad. Where are you from?" },
+            { speaker: 'male',   text: "I am from Saudi Arabia. I live in Riyadh." },
+            { speaker: 'female', text: "And are you a university student?" },
+            { speaker: 'male',   text: "No, I am not. I am a university teacher. I teach computer science." }
+        ],
+        track2: [
+            { speaker: 'male2',  text: "Who is the woman in this photo, Khalid?" },
+            { speaker: 'male',   text: "That is my friend Sarah." },
+            { speaker: 'male2',  text: "Has she got brown hair like you?" },
+            { speaker: 'male',   text: "No, she has got blonde hair and bright green eyes. She is very nice." }
+        ],
+        track3: [
+            { speaker: 'female', text: "Mark, do you sleep late during the week?" },
+            { speaker: 'male',   text: "No, I do not. From Monday to Friday, I always get up at six thirty in the morning. Then I start work at eight thirty. At the weekend, I stay in bed until nine o'clock." }
+        ],
+        track4: [
+            { speaker: 'female', text: "Excuse me, how much are two coffees and one chocolate cake?" },
+            { speaker: 'male',   text: "The coffees are four pounds and the cake is five pounds. That is nine pounds, please." },
+            { speaker: 'female', text: "Can I pay by card?" },
+            { speaker: 'male',   text: "Yes, of course." }
+        ]
+    };
+
+    let availableVoices = [];
+
+    function populateVoices() {
+        if ('speechSynthesis' in window) {
+            availableVoices = window.speechSynthesis.getVoices();
+        }
+    }
+
+    if ('speechSynthesis' in window) {
+        populateVoices();
+        window.speechSynthesis.onvoiceschanged = populateVoices;
+    }
+
+    function getVoice(gender) {
+        if (!availableVoices.length) return null;
+        const enVoices = availableVoices.filter(v => v.lang.startsWith('en'));
+        const searchList = enVoices.length > 0 ? enVoices : availableVoices;
+
+        if (gender === 'female') {
+            const femaleMatch = searchList.find(v => /female|samantha|victoria|zira|susan|karen/i.test(v.name));
+            if (femaleMatch) return femaleMatch;
+        } else {
+            const maleMatch = searchList.find(v => /male|george|david|mark|daniel|james/i.test(v.name));
+            if (maleMatch) return maleMatch;
+        }
+        return searchList[0];
+    }
+
+    function playDialogueTrack(trackKey) {
+        if (!('speechSynthesis' in window)) {
+            alert("خاصية النطق غير مدعومة في متصفحك. يمكنك الاطلاع على النص عبر الزر المخصص.");
+            return;
+        }
+
+        window.speechSynthesis.cancel();
+        const lines = dialogueTracks[trackKey];
+
+        lines.forEach(item => {
+            const utterance = new SpeechSynthesisUtterance(item.text);
+            utterance.lang = 'en-GB';
+            utterance.rate = 0.85;
+
+            const selectedVoice = getVoice(item.speaker === 'female' ? 'female' : 'male');
+            if (selectedVoice) {
+                utterance.voice = selectedVoice;
+            }
+
+            // Differentiate voice tone/pitch
+            if (item.speaker === 'female') {
+                utterance.pitch = 1.25;
+            } else if (item.speaker === 'male2') {
+                utterance.pitch = 0.85;
+            } else {
+                utterance.pitch = 1.0;
+            }
+
+            window.speechSynthesis.speak(utterance);
+        });
+    }
+
+    function stopAudioTrack() {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
+    }
+
+    // Detailed Arabic Explanations and Pedagogy
+    const answerKey = {
+        q1: {
+            correct: 'B',
+            exp: 'إجابة صحيحة! ذكر فهد بوضوح في التسجيل: "I’m from Saudi Arabia. I live in Riyadh."'
+        },
+        q2: {
+            correct: 'C',
+            exp: 'إجابة صحيحة! نفى فهد كونه طالباً وقال: "No, I’m not. I’m a university teacher."'
+        },
+        q3: {
+            correct: 'B',
+            exp: 'إجابة صحيحة! وصف خالد صديقته سارة قائلاً: "she’s got blonde hair and bright green eyes" (شعر أشقر وعينان خضراوان).'
+        },
+        q4: {
+            correct: 'A',
+            exp: 'إجابة صحيحة! حدد مارك وقت استيقاظه خلال أيام العمل قائلاً: "From Monday to Friday, I always get up at 6:30". بينما 8:30 هو موعد بدء عمله، و 9:00 في عطلة نهاية الأسبوع.'
+        },
+        q5: {
+            correct: 'C',
+            exp: 'إجابة صحيحة! القهوتان بـ 4 باوند والكعكة بـ 5 باوند، وذكر المحاسب الإجمالي صراحة: "That’s nine pounds, please" (£9).'
+        },
+        q6: {
+            correct: 'B',
+            exp: 'إجابة صحيحة! الفكرة العامة للنص بالكامل تتناول روتين سلطان اليومي، شقته التي يعيش فيها، ومدينته أبها (Sultan\'s daily routine, home, and town).'
+        },
+        q7: {
+            correct: 'B',
+            exp: 'إجابة صحيحة! ذُكر في السطر الثاني من النص نصاً: "Sultan works as an engineer in an office downtown" (يعمل في مكتب).'
+        },
+        q8: {
+            correct: 'C',
+            exp: 'إجابة صحيحة! النص يوضح ما تشتمل عليه الشقة ونفى وجود الحديقة بقوله: "but there isn\'t a garden".'
+        },
+        q9: {
+            correct: 'C',
+            exp: 'إجابة صحيحة! جاء في الفقرة الأخيرة: "At the weekend, Sultan meets his friends at the café" (يقابل أصدقاءه في المقهى).'
+        },
+        q10: {
+            correct: 'D',
+            exp: 'إجابة صحيحة! صرح النص بالقدرات التي يجيدها، ثم ختم بنفي قيادة السيارة: "but he can\'t drive a car".'
+        },
+        q11: {
+            correct: 'C',
+            exp: 'إجابة صحيحة! الفاعل هنا اسم جمع غائب (Maria and Elena) يعادل الضمير (They)، وصيغة الاختصار المناسبة مع are هي "They\'re".'
+        },
+        q12: {
+            correct: 'A',
+            exp: 'إجابة صحيحة! طارق اسم مفرد مذكر، وصفة الملكية الدالة عليه هي "His" (أي والده هو). Her للمؤنث و Their للجمع.'
+        },
+        q13: {
+            correct: 'B',
+            exp: 'إجابة صحيحة! الاسم بعد الفراغ جمع مسبوق برقم (three supermarkets)، لذا نستخدم في الإثبات "There are".'
+        },
+        q14: {
+            correct: 'C',
+            exp: 'إجابة صحيحة! الفاعل مفرد غائب (My brother = he)، وفي زمن المضارع البسيط ننفي الفعل باستخدام "doesn\'t" يليه الفعل المجرد "drink".'
+        },
+        q15: {
+            correct: 'B',
+            exp: 'إجابة صحيحة! السؤال بصيغة الملكية لوجود كلمة "got" مع الضمير "you" يبدأ بـ "Have you got...?"، وتؤكده الإجابة القصيرة: "Yes, I have".'
+        },
+        q16: {
+            correct: 'A',
+            exp: 'إجابة صحيحة! الشخص الذي يعمل في المستشفى ويساعد المرضى هو الممرض/الممرضة (nurse).'
+        },
+        q17: {
+            correct: 'B',
+            exp: 'إجابة صحيحة! المكان المخصص لشراء الأطعمة والخبز والخضراوات هو السوبرماركت (supermarket).'
+        },
+        q18: {
+            correct: 'C',
+            exp: 'إجابة صحيحة! عندما يكون الطقس بارداً نرتدي المعطف (coat) للحماية من البرد.'
+        },
+        q19: {
+            correct: 'B',
+            exp: 'إجابة صحيحة! التعبير الاصطلاحي الشائع في الإنجليزية للذهاب إلى النوم عند التعب هو "go to bed".'
+        },
+        q20: {
+            correct: 'A',
+            exp: 'إجابة صحيحة! مع الآلات الموسيقية كالجيتار نستخدم دائماً الفعل "play" (play the guitar = يعزف على الجيتار).'
+        }
+    };
+
+    function toggleAudioScript() {
+        const box = document.getElementById('listeningScripts');
+        box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function checkAllAnswers() {
+        let score = 0;
+        const total = 20;
+
+        for (let i = 1; i <= total; i++) {
+            const qKey = 'q' + i;
+            const card = document.getElementById(`card_${qKey}`);
+            const selected = document.querySelector(`input[name="${qKey}"]:checked`);
+            const fbBox = document.getElementById(`fb_${qKey}`);
+
+            if (selected) {
+                if (selected.value === answerKey[qKey].correct) {
+                    score++;
+                    card.style.borderColor = '#86efac';
+                    fbBox.className = 'feedback-box correct';
+                    fbBox.innerHTML = `<div class="feedback-title">✓ إجابة صحيحة (Correct)</div>${answerKey[qKey].exp}`;
+                } else {
+                    card.style.borderColor = '#fca5a5';
+                    fbBox.className = 'feedback-box incorrect';
+                    fbBox.innerHTML = `<div class="feedback-title">✗ إجابة غير صحيحة (Incorrect)</div>الإجابة الصحيحة هي: <strong>(${answerKey[qKey].correct})</strong>.<br>${answerKey[qKey].exp}`;
+                }
+            } else {
+                card.style.borderColor = '#fca5a5';
+                fbBox.className = 'feedback-box incorrect';
+                fbBox.innerHTML = `<div class="feedback-title">⚠ لم يتم اختيار إجابة!</div>الإجابة الصحيحة هي: <strong>(${answerKey[qKey].correct})</strong>.<br>${answerKey[qKey].exp}`;
+            }
+        }
+
+        const scoreBoard = document.getElementById('scoreBoard');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const scoreMsg = document.getElementById('scoreMsg');
+
+        scoreDisplay.innerText = `${score} / ${total}`;
+        scoreBoard.style.display = 'block';
+
+        if (score >= 17) {
+            scoreMsg.style.color = '#15803d';
+            scoreMsg.innerText = "ممتاز جداً! أداء متفوق يعكس استيعاباً كاملاً لمقرر Roadmap A1 الوحدات (1–6).";
+        } else if (score >= 12) {
+            scoreMsg.style.color = '#0284c7';
+            scoreMsg.innerText = "أحسنت! درجة جيدة جداً، يُرجى مراجعة الأسئلة الخاطئة وتفسيراتها لتثبيت المعلومة.";
+        } else {
+            scoreMsg.style.color = '#b91c1c';
+            scoreMsg.innerText = "يحتاج الطالب إلى إعادة مراجعة القواعد والمفردات الأساسية للوحدات المقررة.";
+        }
+
+        scoreBoard.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
